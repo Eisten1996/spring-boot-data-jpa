@@ -1,7 +1,6 @@
 package com.bolasaideas.springboot.app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +12,6 @@ import com.bolasaideas.springboot.app.models.dao.IClienteDao;
 public class ClienteController {
 
 	@Autowired
-	@Qualifier("ClienteDaoJPA")
 	private IClienteDao clienteDao;
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
