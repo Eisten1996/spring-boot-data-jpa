@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.bolasaideas.springboot.app.models.entities.Cliente;
 
@@ -16,7 +15,6 @@ public class ClienteDaoImpl implements IClienteDao {
 	@PersistenceContext
 	private EntityManager em;
 
-	@Transactional(readOnly = true)
 	@Override
 	public List<Cliente> findAll() {
 		// TODO Auto-generated method stub
@@ -24,7 +22,6 @@ public class ClienteDaoImpl implements IClienteDao {
 	}
 
 	@Override
-	@Transactional
 	public void save(Cliente cliente) {
 		// TODO Auto-generated method stub
 		if (cliente.getId() != null && cliente.getId() > 0) {
@@ -41,7 +38,6 @@ public class ClienteDaoImpl implements IClienteDao {
 	}
 
 	@Override
-	@Transactional
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
 		em.remove(findOne(id));
