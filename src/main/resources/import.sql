@@ -1,0 +1,2 @@
+insert into clientes(id,nombre,apellido,email,create_at) values(1,'Eisten','Flores','eisten.flores@unmsm.edu.pe','2020-08-20');
+insert into clientes(id,nombre,apellido,email,create_at) values(2,'Dipper','Pines','dipper.pines@gmail.com','2020-08-22');
