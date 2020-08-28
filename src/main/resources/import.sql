@@ -5,7 +5,7 @@ insert into clientes (id, nombre, apellido, email, create_at,foto) values (4, 'K
 insert into clientes (id, nombre, apellido, email, create_at,foto) values (5, 'Madel', 'Gildersleaves', 'mgildersleaves4@chronoengine.com', '2020-07-05','');
 insert into clientes (id, nombre, apellido, email, create_at,foto) values (6, 'Crin', 'Hodge', 'chodge5@mapy.cz', '2020-08-15','');
 insert into clientes (id, nombre, apellido, email, create_at,foto) values (7, 'Garvy', 'Husher', 'ghusher6@google.com.au', '2020-08-08','');
-insert into clientes (id, nombre, apellido, email, create_at,foto) values (8, 'Diannne', 'Bollins', 'dbollins7@weebly.com', '2019-12-05');
+insert into clientes (id, nombre, apellido, email, create_at,foto) values (8, 'Diannne', 'Bollins', 'dbollins7@weebly.com', '2019-12-05','');
 insert into clientes (id, nombre, apellido, email, create_at,foto) values (9, 'Gregory', 'Sieghart', 'gsieghart8@mashable.com', '2019-10-05','');
 insert into clientes (id, nombre, apellido, email, create_at,foto) values (10, 'Danila', 'Leagas', 'dleagas9@quantcast.com', '2019-09-23','');
 insert into clientes (id, nombre, apellido, email, create_at,foto) values (11, 'Hendrick', 'Dorbon', 'hdorbona@abc.net.au', '2020-01-14','');
