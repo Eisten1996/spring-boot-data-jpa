@@ -93,8 +93,7 @@ public class ClienteController {
 
         if (!foto.isEmpty()) {
 
-            Path directorioRecursos = Paths.get("src//main//resources//static//upload");
-            String rootPath = directorioRecursos.toFile().getAbsolutePath();
+            String rootPath = "D://Temp//Uploads";
 
             try {
 
