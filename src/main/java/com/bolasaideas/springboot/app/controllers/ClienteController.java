@@ -92,19 +92,24 @@ public class ClienteController {
         }
 
         if (!foto.isEmpty()) {
-            Path directorioRecurso = Paths.get("src//main//resources//static//upload");
-            String rootPath = directorioRecurso.toFile().getAbsolutePath();
+
+            Path directorioRecursos = Paths.get("src//main//resources//static//upload");
+            String rootPath = directorioRecursos.toFile().getAbsolutePath();
+
             try {
+
                 byte[] bytes = foto.getBytes();
                 Path rutaCompleta = Paths.get(rootPath + "//" + foto.getOriginalFilename());
                 Files.write(rutaCompleta, bytes);
-                flash.addFlashAttribute("info", "Ha subido correctamente ".concat(foto.getOriginalFilename()));
+                flash.addFlashAttribute("info", "Has subido correctamente '" + foto.getOriginalFilename() + "'");
+
                 cliente.setFoto(foto.getOriginalFilename());
+
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
+
 
         String mensajeFlash = cliente.getId() != null ? "Cliente editado con exito" : "Cliente creado con exito";
 
