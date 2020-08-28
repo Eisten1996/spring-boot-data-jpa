@@ -17,15 +17,16 @@ public class PageRender<T> {
 	private List<PageItem> paginas;
 
 	public PageRender(String url, Page<T> page) {
-		super();
 		this.url = url;
 		this.page = page;
 		paginas = new ArrayList<>();
 
-		totalPaginas = page.getSize();
-		numElementosPorPagina = page.getTotalPages();
-		paginaActual = page.getNumber();
+		numElementosPorPagina = page.getSize();
+		totalPaginas = page.getTotalPages();
+		paginaActual = page.getNumber() + 1;
+		
 		int desde, hasta;
+		
 		if (totalPaginas <= numElementosPorPagina) {
 			desde = 1;
 			hasta = totalPaginas;

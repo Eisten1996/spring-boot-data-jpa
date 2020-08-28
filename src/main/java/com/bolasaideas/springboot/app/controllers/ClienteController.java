@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bolasaideas.springboot.app.models.entities.Cliente;
 import com.bolasaideas.springboot.app.models.service.IClienteService;
+import com.bolasaideas.springboot.app.util.paginator.PageRender;
 
 @Controller
 @SessionAttributes("cliente")
@@ -33,10 +34,12 @@ public class ClienteController {
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listar(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
-		Pageable pageable = PageRequest.of(page, 4);
+		Pageable pageable = PageRequest.of(page, 5);
 		Page<Cliente> clientes = clienteService.findAll(pageable);
+		PageRender<Cliente> pageRender = new PageRender<>("/listar", clientes);
 		model.addAttribute("titulo", "Listado de clientes");
 		model.addAttribute("clientes", clientes);
+		model.addAttribute("page", pageRender);
 		return "listar";
 	}
 
