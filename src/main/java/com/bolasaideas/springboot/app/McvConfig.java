@@ -13,7 +13,7 @@ public class McvConfig implements WebMvcConfigurer {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-    @Override
+   /* @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
         WebMvcConfigurer.super.addResourceHandlers(registry);
@@ -22,5 +22,5 @@ public class McvConfig implements WebMvcConfigurer {
         log.info(resourcePath);
 
         registry.addResourceHandler("/uploads/**").addResourceLocations(resourcePath);
-    }
+    }*/
 }
