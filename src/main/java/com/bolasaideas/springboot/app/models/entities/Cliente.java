@@ -1,16 +1,11 @@
 package com.bolasaideas.springboot.app.models.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -23,84 +18,102 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "clientes")
 public class Cliente implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@NotBlank
-	/* @Size(min = 4, max = 12) */
-	private String nombre;
+    @NotBlank
+    /* @Size(min = 4, max = 12) */
+    private String nombre;
 
-	@NotBlank
-	private String apellido;
+    @NotBlank
+    private String apellido;
 
-	@NotEmpty
-	@Email
-	private String email;
+    @NotEmpty
+    @Email
+    private String email;
 
-	@NotNull
-	@Column(name = "create_at")
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date createAt;
+    @NotNull
+    @Column(name = "create_at")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date createAt;
 
-	private String foto;
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Factura> facturas;
 
-	public Long getId() {
-		return id;
-	}
+    public Cliente() {
+        facturas = new ArrayList<Factura>();
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private String foto;
 
-	public String getNombre() {
-		return nombre;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getApellido() {
-		return apellido;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getApellido() {
+        return apellido;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
 
-	public Date getCreateAt() {
-		return createAt;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getFoto() {
-		return foto;
-	}
+    public Date getCreateAt() {
+        return createAt;
+    }
 
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public String getFoto() {
+        return foto;
+    }
 
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+    public List<Factura> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(List<Factura> facturas) {
+        this.facturas = facturas;
+    }
+
+    public void addFactura(Factura factura) {
+        facturas.add(factura);
+    }
 }
