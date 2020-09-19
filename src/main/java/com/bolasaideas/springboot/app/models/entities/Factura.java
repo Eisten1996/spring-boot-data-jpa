@@ -2,7 +2,9 @@ package com.bolasaideas.springboot.app.models.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "facturas")
@@ -20,9 +22,17 @@ public class Factura implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "factura_id")
+    private List<ItemFactura> items;
+
     @PrePersist
     public void prePersist() {
         createAt = new Date();
+    }
+
+    public Factura() {
+        this.items = new ArrayList<ItemFactura>();
     }
 
     public Long getId() {
@@ -63,5 +73,18 @@ public class Factura implements Serializable {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public List<ItemFactura> getItems() {
+        return items;
+    }
+
+    public void setItems(List<ItemFactura> items) {
+        this.items = items;
+    }
+
+    public void addItemFactura(ItemFactura itemFactura) {
+        this.items.add(itemFactura);
+
     }
 }
