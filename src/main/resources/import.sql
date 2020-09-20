@@ -20,3 +20,24 @@ insert into clientes (id, nombre, apellido, email, create_at,foto) values (19, '
 insert into clientes (id, nombre, apellido, email, create_at,foto) values (20, 'Errick', 'Pietruszka', 'epietruszkaj@phpbb.com', '2020-02-03','');
 insert into clientes (id, nombre, apellido, email, create_at,foto) values (21, 'Jehu', 'Stopforth', 'jstopforthk@networksolutions.com', '2019-09-06','');
 insert into clientes (id, nombre, apellido, email, create_at,foto) values (22, 'Maura', 'Bauser', 'mbauserl@photobucket.com', '2019-11-15','');
+
+insert into productos (nombre, precio ,create_at) values ('Shallots', 787.49,NOW());
+insert into productos (nombre, precio ,create_at) values ('Scallops - 20/30', 928.89,NOW());
+insert into productos (nombre, precio ,create_at) values ('Chocolate - Milk', 205.54,NOW()); 
+insert into productos (nombre, precio ,create_at) values ('Muffin Mix - Banana Nut', 204.21,NOW());
+insert into productos (nombre, precio ,create_at) values ('Pastry - Chocolate Chip Muffin', 315.72,NOW());
+insert into productos (nombre, precio ,create_at) values ('Banana', 932.82,NOW());
+insert into productos (nombre, precio ,create_at) values ('Pur Source', 250.13,NOW());
+insert into productos (nombre, precio ,create_at) values ('Pastry - Mini French Pastries', 155.07,NOW());
+insert into productos (nombre, precio ,create_at) values ('Pasta - Lasagna, Dry', 195.01,NOW());
+insert into productos (nombre, precio ,create_at) values ('Shrimp - Prawn', 601.6,NOW());
+insert into productos (nombre, precio ,create_at) values ('Salmon - Fillets', 914.82,NOW());
+insert into productos (nombre, precio ,create_at) values ('Vol Au Vents', 505.94,NOW());
+insert into productos (nombre, precio ,create_at) values ('Lid Tray - 16in Dome', 730.09,NOW());
+insert into productos (nombre, precio ,create_at) values ('Liners - Baking Cups', 131.83,NOW());
+insert into productos (nombre, precio ,create_at) values ('Bread - Rye', 604.84,NOW());
+insert into productos (nombre, precio ,create_at) values ('Broom - Angled', 306.08,NOW());
+insert into productos (nombre, precio ,create_at) values ('Pail For Lid 1537', 954.82,NOW());
+insert into productos (nombre, precio ,create_at) values ('Bread - Wheat Baguette', 968.55,NOW());
+insert into productos (nombre, precio ,create_at) values ('Grand Marnier', 532.24,NOW());
+insert into productos (nombre, precio ,create_at) values ('Sugar - Icing', 476.01,NOW());
