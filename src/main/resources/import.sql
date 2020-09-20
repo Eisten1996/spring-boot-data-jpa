@@ -41,3 +41,37 @@ insert into productos (nombre, precio ,create_at) values ('Pail For Lid 1537', 9
 insert into productos (nombre, precio ,create_at) values ('Bread - Wheat Baguette', 968.55,NOW());
 insert into productos (nombre, precio ,create_at) values ('Grand Marnier', 532.24,NOW());
 insert into productos (nombre, precio ,create_at) values ('Sugar - Icing', 476.01,NOW());
+
+
+insert into facturas (descripcion, observacion, cliente_id, create_at) values ('suspendisse ornare consequat lectus in', null, 9, NOW());
+insert into facturas (descripcion, observacion, cliente_id, create_at) values ('luctus et ultrices posuere cubilia curae duis', null, 5, NOW());
+insert into facturas (descripcion, observacion, cliente_id, create_at) values ('in est risus auctor sed tristique in', null, 6, NOW());
+insert into facturas (descripcion, observacion, cliente_id, create_at) values ('dui nec nisi volutpat eleifend', null, 12, NOW());
+insert into facturas (descripcion, observacion, cliente_id, create_at) values ('placerat ante nulla justo', null, 18, NOW());
+insert into facturas (descripcion, observacion, cliente_id, create_at) values ('velit id pretium iaculis', 'eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus', 9, NOW());
+insert into facturas (descripcion, observacion, cliente_id, create_at) values ('amet nulla quisque arcu libero rutrum', 'sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam', 19, NOW());
+insert into facturas (descripcion, observacion, cliente_id, create_at) values ('aliquet ultrices erat tortor sollicitudin mi', 'orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu', 2, NOW());
+insert into facturas (descripcion, observacion, cliente_id, create_at) values ('ac leo pellentesque ultrices mattis', null, 1, NOW());
+insert into facturas (descripcion, observacion, cliente_id, create_at) values ('dui vel sem', 'etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna', 2, NOW());
+
+insert into factura_items (cantidad, factura_id, producto_id) values (2, 2, 4);
+insert into factura_items (cantidad, factura_id, producto_id) values (3, 4, 16);
+insert into factura_items (cantidad, factura_id, producto_id) values (9, 8, 16);
+insert into factura_items (cantidad, factura_id, producto_id) values (6, 7, 7);
+insert into factura_items (cantidad, factura_id, producto_id) values (3, 1, 18);
+insert into factura_items (cantidad, factura_id, producto_id) values (9, 3, 9);
+insert into factura_items (cantidad, factura_id, producto_id) values (4, 2, 6);
+insert into factura_items (cantidad, factura_id, producto_id) values (4, 1, 2);
+insert into factura_items (cantidad, factura_id, producto_id) values (6, 1, 12);
+insert into factura_items (cantidad, factura_id, producto_id) values (3, 5, 15);
+insert into factura_items (cantidad, factura_id, producto_id) values (2, 5, 19);
+insert into factura_items (cantidad, factura_id, producto_id) values (1, 8, 19);
+insert into factura_items (cantidad, factura_id, producto_id) values (9, 9, 17);
+insert into factura_items (cantidad, factura_id, producto_id) values (8, 1, 6);
+insert into factura_items (cantidad, factura_id, producto_id) values (2, 7, 11);
+insert into factura_items (cantidad, factura_id, producto_id) values (9, 7, 20);
+insert into factura_items (cantidad, factura_id, producto_id) values (10, 10, 12);
+insert into factura_items (cantidad, factura_id, producto_id) values (4, 7, 10);
+insert into factura_items (cantidad, factura_id, producto_id) values (10, 4, 15);
+insert into factura_items (cantidad, factura_id, producto_id) values (2, 3, 20);
+insert into factura_items (cantidad, factura_id, producto_id) values (1, 6, 18);
