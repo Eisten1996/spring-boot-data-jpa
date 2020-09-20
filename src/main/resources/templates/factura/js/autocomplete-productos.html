@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaft.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <body>
+
 <script type="text/javascript" th:fragment="javascript">
     $(document).ready(function () {
+
         $("#buscar_producto").autocomplete({
+
             source: function (request, response) {
                 $.ajax({
                     url: "/factura/cargar-productos/" + request.term,
-                    data_type: "json",
+                    dataType: "json",
                     data: {
                         term: request.term
                     },
@@ -17,18 +20,18 @@
                                 value: item.id,
                                 label: item.nombre,
                                 precio: item.precio,
-                            }
-                        }))
+                            };
+                        }));
                     },
-                })
+                });
             },
             select: function (event, ui) {
                 $("#buscar_producto").val(ui.item.label);
+
                 return false;
             }
-        })
-    })
+        });
+    });
 </script>
-
 </body>
 </html>
