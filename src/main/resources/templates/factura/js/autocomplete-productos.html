@@ -33,11 +33,17 @@
                 linea = linea.replace(/{PRECIO}/g, ui.item.precio)
 
                 $("#cargarItemProducto tbody").append(linea)
+                itemsHelpers.calularImporte(ui.item.value, ui.item.precio, 1)
 
                 return false;
             }
         });
     });
+    var itemsHelpers = {
+        calularImporte: function (id, precio, cantidad) {
+            $("#total_importe_" + id).html((parseFloat(precio) * parseFloat(cantidad)));
+        }
+    }
 </script>
 </body>
 </html>
