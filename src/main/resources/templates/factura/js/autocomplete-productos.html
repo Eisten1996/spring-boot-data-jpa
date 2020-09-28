@@ -44,6 +44,9 @@
                 return false;
             }
         });
+        $("form").submit(function () {
+            $("#plantillaItemsFactura").remove();
+        })
     });
     var itemsHelpers = {
         calularImporte: function (id, precio, cantidad) {

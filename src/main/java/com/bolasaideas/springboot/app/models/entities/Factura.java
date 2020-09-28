@@ -85,7 +85,6 @@ public class Factura implements Serializable {
 
     public void addItemFactura(ItemFactura itemFactura) {
         this.items.add(itemFactura);
-
     }
 
     public Double getTotal() {

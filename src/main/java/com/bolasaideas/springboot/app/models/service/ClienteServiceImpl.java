@@ -64,6 +64,7 @@ public class ClienteServiceImpl implements IClienteService {
     @Override
     @Transactional
     public void saveFactura(Factura factura) {
+        System.out.println(factura.getDescripcion());
         facturaDao.save(factura);
     }
 
