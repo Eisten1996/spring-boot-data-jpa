@@ -27,6 +27,12 @@
             },
             select: function (event, ui) {
                 // $("#buscar_producto").val(ui.item.label);
+
+                if (itemsHelpers.hasProducto(ui.item.value)) {
+                    itemsHelpers.incrementaCantidad(ui.item.value, ui.item.precio);
+                    return false;
+                }
+
                 var linea = $("#plantillaItemsFactura").html();
                 linea = linea.replace(/{ID}/g, ui.item.value)
                 linea = linea.replace(/{NOMBRE}/g, ui.item.label)
@@ -42,6 +48,20 @@
     var itemsHelpers = {
         calularImporte: function (id, precio, cantidad) {
             $("#total_importe_" + id).html((parseFloat(precio) * parseFloat(cantidad)));
+        },
+        hasProducto: function (id) {
+            var resultado = false;
+            $('input[name="item_id[]"]').each(function () {
+                if (parseInt(id) == parseInt($(this).val())) {
+                    resultado = true;
+                }
+            });
+            return resultado;
+        },
+        incrementaCantidad: function (id, precio) {
+            var cantidad = $("#cantidad_" + id).val() ? parseInt($("#cantidad_" + id).val()) : 0;
+            $("#cantidad_" + id).val(++cantidad);
+            this.calularImporte(id, precio, cantidad);
         }
     }
 </script>
