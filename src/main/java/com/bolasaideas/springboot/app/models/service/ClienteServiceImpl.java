@@ -2,7 +2,9 @@ package com.bolasaideas.springboot.app.models.service;
 
 import java.util.List;
 
+import com.bolasaideas.springboot.app.models.dao.IFacturaDao;
 import com.bolasaideas.springboot.app.models.dao.IProductoDao;
+import com.bolasaideas.springboot.app.models.entities.Factura;
 import com.bolasaideas.springboot.app.models.entities.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +23,9 @@ public class ClienteServiceImpl implements IClienteService {
 
     @Autowired
     private IProductoDao productoDao;
+
+    @Autowired
+    private IFacturaDao facturaDao;
 
     @Override
     @Transactional(readOnly = true)
@@ -54,6 +59,12 @@ public class ClienteServiceImpl implements IClienteService {
     @Transactional(readOnly = true)
     public List<Producto> findByNombre(String term) {
         return productoDao.findByNombreLikeIgnoreCase("%" + term + "%");
+    }
+
+    @Override
+    @Transactional
+    public void saveFactura(Factura factura) {
+        facturaDao.save(factura);
     }
 
     @Override
