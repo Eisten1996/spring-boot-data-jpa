@@ -1,9 +1,9 @@
 package com.bolasaideas.springboot.app.models.service;
 
-import java.util.List;
-
+import com.bolasaideas.springboot.app.models.dao.IClienteDao;
 import com.bolasaideas.springboot.app.models.dao.IFacturaDao;
 import com.bolasaideas.springboot.app.models.dao.IProductoDao;
+import com.bolasaideas.springboot.app.models.entities.Cliente;
 import com.bolasaideas.springboot.app.models.entities.Factura;
 import com.bolasaideas.springboot.app.models.entities.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bolasaideas.springboot.app.models.dao.IClienteDao;
-import com.bolasaideas.springboot.app.models.entities.Cliente;
+import java.util.List;
 
 @Service
 public class ClienteServiceImpl implements IClienteService {
@@ -78,6 +77,11 @@ public class ClienteServiceImpl implements IClienteService {
     @Transactional(readOnly = true)
     public Factura findFacturaById(Long id) {
         return facturaDao.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteFactura(Long id) {
+        facturaDao.deleteById(id);
     }
 
     @Override
