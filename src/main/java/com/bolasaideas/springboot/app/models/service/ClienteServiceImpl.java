@@ -76,6 +76,12 @@ public class ClienteServiceImpl implements IClienteService {
 
     @Override
     @Transactional(readOnly = true)
+    public Factura findFacturaById(Long id) {
+        return facturaDao.findById(id).orElse(null);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public Page<Cliente> findAll(Pageable pageable) {
         // TODO Auto-generated method stub
         return clienteDao.findAll(pageable);
