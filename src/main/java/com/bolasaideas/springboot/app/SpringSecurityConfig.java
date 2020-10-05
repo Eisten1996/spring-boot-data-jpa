@@ -1,5 +1,6 @@
 package com.bolasaideas.springboot.app;
 
+import com.bolasaideas.springboot.app.auth.handler.LoginSuccesHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    @Autowired
+    private LoginSuccesHandler successHandler;
 
     @Autowired
     public void configurerGlobal(AuthenticationManagerBuilder builder) throws Exception {
@@ -38,9 +42,14 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/factura/**").hasAnyRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").permitAll()
+                .formLogin()
+                .successHandler(successHandler)
+                .loginPage("/login")
+                .permitAll()
                 .and()
                 .logout().permitAll()
-                .and().exceptionHandling().accessDeniedPage("/error_403");
+                .and()
+                .exceptionHandling().accessDeniedPage("/error_403");
+
     }
 }
