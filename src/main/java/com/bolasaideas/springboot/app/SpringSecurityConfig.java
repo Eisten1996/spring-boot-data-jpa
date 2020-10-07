@@ -2,36 +2,42 @@ package com.bolasaideas.springboot.app;
 
 import com.bolasaideas.springboot.app.auth.handler.LoginSuccesHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
-@EnableGlobalMethodSecurity(securedEnabled=true, prePostEnabled=true)
+import javax.sql.DataSource;
+
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    private DataSource dataSource;
+
 
     @Autowired
     private LoginSuccesHandler successHandler;
 
     @Autowired
     public void configurerGlobal(AuthenticationManagerBuilder builder) throws Exception {
-        PasswordEncoder encoder = passwordEncoder();
-        User.UserBuilder users = User.builder().passwordEncoder(encoder::encode);
-
-        builder.inMemoryAuthentication()
-                .withUser(users.username("admin").password("12345").roles("ADMIN", "USER"))
-                .withUser(users.username("dipper").password("12345").roles("USER"));
+        builder.jdbcAuthentication()
+                .dataSource(dataSource)
+                .passwordEncoder(passwordEncoder)
+                .usersByUsernameQuery("select username, password, enable from users where username=?")
+                .authoritiesByUsernameQuery("select u.username, a.authoritiy from authorities a inner join users u on (a.user_id=u.id) where u.username=?");
+//        PasswordEncoder encoder = this.passwordEncoder;
+//        User.UserBuilder users = User.builder().passwordEncoder(encoder::encode);
+//
+//        builder.inMemoryAuthentication()
+//                .withUser(users.username("admin").password("12345").roles("ADMIN", "USER"))
+//                .withUser(users.username("dipper").password("12345").roles("USER"));
     }
 
     @Override
