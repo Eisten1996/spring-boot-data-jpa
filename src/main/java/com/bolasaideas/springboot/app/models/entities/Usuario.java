@@ -23,7 +23,7 @@ public class Usuario implements Serializable {
     @Column(length = 60)
     private String password;
 
-    private String enabled;
+    private Boolean enabled;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
@@ -53,11 +53,11 @@ public class Usuario implements Serializable {
         this.password = password;
     }
 
-    public String getEnabled() {
+    public Boolean getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(String enabled) {
+    public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 
