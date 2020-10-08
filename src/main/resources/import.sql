@@ -75,3 +75,10 @@ insert into factura_items (cantidad, factura_id, producto_id) values (4, 7, 10);
 insert into factura_items (cantidad, factura_id, producto_id) values (10, 4, 15);
 insert into factura_items (cantidad, factura_id, producto_id) values (2, 3, 20);
 insert into factura_items (cantidad, factura_id, producto_id) values (1, 6, 18);
+
+insert into users (username,password,enabled) values ('dipper','$2a$10$LXts3YFBa8VY0e4shwm5WOAhL36.PGs8370ZL7NUpluthbbqVW5PK',1);
+insert into users (username,password,enabled) values ('admin','$2a$10$HT39.StgR/bJzGhFygtdLuUg9c2ECkihOwY/KgQXpZF2Cjd7HHTo2',1);
+
+insert into authorities (user_id,authority) values (1,'ROLE_USER');
+insert into authorities (user_id,authority) values (2,'ROLE_USER');
+insert into authorities (user_id,authority) values (2,'ROLE_ADMIN');
