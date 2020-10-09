@@ -26,7 +26,7 @@
             <ul class="navbar-nav ml-auto">
                 <li sec:authorize="! isAuthenticated()"><a class="btn btn-outline-primary" th:href="@{/login}">Sign
                     In</a></li>
-                <li sec:authorize="isAuthenticated()" class="dropdown">
+                <li sec:authorize="isAuthenticated()" class="dropdown show">
                     <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span sec:authentication="name"></span>
@@ -43,11 +43,23 @@
                 </li>
             </ul>
             <ul class="navbar-nav  mx-4">
-                <li class="nav-item mx-1"><a class="btn btn-outline-success" th:href="@{/locale(lang=es_ES)}">ES</a>
-                </li>
-                <li class="nav-item mx-1"><a class="btn btn-outline-success" th:href="@{/locale(lang=en_US)}">EN</a>
-                </li>
-                <li class="nav-item mx-1"><a class="btn btn-outline-success" th:href="@{/locale(lang=de_DE)}">DE</a>
+                <!--                <li class="nav-item mx-1"><a class="btn btn-outline-success" th:href="@{/locale(lang=es_ES)}">ES</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item mx-1"><a class="btn btn-outline-success" th:href="@{/locale(lang=en_US)}">EN</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item mx-1"><a class="btn btn-outline-success" th:href="@{/locale(lang=de_DE)}">DE</a>-->
+                <!--                </li>-->
+
+                <li class="nav-item dropdown show">
+                    <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLenguaje"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span th:text="#{text.locale.language}"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLenguaje">
+                        <a class="dropdown-item" th:href="@{/locale(lang=es_ES)}" th:text="#{text.locale.es}"></a>
+                        <a class="dropdown-item" th:href="@{/locale(lang=en_US)}" th:text="#{text.locale.en}"></a>
+                        <a class="dropdown-item" th:href="@{/locale(lang=de_DE)}" th:text="#{text.locale.es}"></a>
+                    </div>
                 </li>
             </ul>
         </div>
