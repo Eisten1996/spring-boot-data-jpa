@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaft.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layaout/layaout :: head">
 </head>
 <body>
@@ -10,6 +10,8 @@
         <div class="card-body">
             <h4 class="card-title">
                 <a th:href="@{'/ver/'+${factura.cliente.id}}" class="btn btn-light btn-sm">&laquo; volver</a>
+                <a th:href="@{'/factura/ver/'+${factura.id}(format=pdf)}"
+                   class="btn btn-danger btn-sm float-right">PDF</a>
             </h4>
             <ul class="list-group my-2">
                 <li class="list-group-item list-group-item-primary" th:text="'Datos del cliente'"></li>

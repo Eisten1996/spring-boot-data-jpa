@@ -3,7 +3,6 @@ package com.bolasaideas.springboot.app.view.pdf;
 import com.bolasaideas.springboot.app.models.entities.Factura;
 import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfPTable;
-import com.lowagie.text.pdf.PdfTable;
 import com.lowagie.text.pdf.PdfWriter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.document.AbstractPdfView;
@@ -27,11 +26,13 @@ public class FacturaPdfView extends AbstractPdfView {
         Factura factura = (Factura) map.get("factura");
 
         PdfPTable table = new PdfPTable(1);
+        table.setSpacingAfter(20);
         table.addCell("Datos del cliente");
         table.addCell(factura.getCliente().getNombre().concat(" ").concat(factura.getCliente().getApellido()));
         table.addCell(factura.getCliente().getEmail());
 
         PdfPTable table2 = new PdfPTable(1);
+        table2.setSpacingAfter(20);
         table2.addCell("Datos de la factura");
         table2.addCell("Folio: " + factura.getId());
         table2.addCell("Descripcion: " + factura.getDescripcion());
