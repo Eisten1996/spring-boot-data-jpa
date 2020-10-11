@@ -1,7 +1,10 @@
 package com.bolasaideas.springboot.app.view.pdf;
 
 import com.bolasaideas.springboot.app.models.entities.Factura;
+import com.bolasaideas.springboot.app.models.entities.ItemFactura;
 import com.lowagie.text.Document;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import org.springframework.stereotype.Component;
@@ -38,7 +41,28 @@ public class FacturaPdfView extends AbstractPdfView {
         table2.addCell("Descripcion: " + factura.getDescripcion());
         table2.addCell("Fecha: " + factura.getCreateAt());
 
+        PdfPTable table3 = new PdfPTable(4);
+        table3.setSpacingAfter(20);
+        table3.addCell("Producto");
+        table3.addCell("Precio");
+        table3.addCell("Cantidad");
+        table3.addCell("Total");
+
+        for (ItemFactura item : factura.getItems()) {
+            table3.addCell(item.getProducto().getNombre());
+            table3.addCell(item.getProducto().getPrecio().toString());
+            table3.addCell(item.getCantidad().toString());
+            table3.addCell(item.calcularImporte().toString());
+        }
+
+        PdfPCell cell = new PdfPCell(new Phrase("Total: "));
+        cell.setColspan(3);
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_RIGHT);
+        table3.addCell(cell);
+        table3.addCell(factura.getTotal().toString());
+
         document.add(table);
         document.add(table2);
+        document.add(table3);
     }
 }
