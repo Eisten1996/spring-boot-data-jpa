@@ -1,5 +1,9 @@
 package com.bolasaideas.springboot.app.view.xlsx;
 
+import com.bolasaideas.springboot.app.models.entities.Factura;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
@@ -19,6 +23,24 @@ public class FacturaXlsxView extends AbstractXlsxView {
     protected void buildExcelDocument(Map<String, Object> map, Workbook workbook,
                                       HttpServletRequest httpServletRequest,
                                       HttpServletResponse httpServletResponse) throws Exception {
+        Factura factura = (Factura) map.get("factura");
+        Sheet sheet = workbook.createSheet("Factura Spring");
 
+        Row row = sheet.createRow(0);
+        Cell cell = row.createCell(0);
+        cell.setCellValue("Datos del cliente");
+
+        row = sheet.createRow(1);
+        cell = row.createCell(0);
+        cell.setCellValue(factura.getCliente().getNombre() + " " + factura.getCliente().getApellido());
+
+        row = sheet.createRow(2);
+        cell = row.createCell(0);
+        cell.setCellValue(factura.getCliente().getEmail());
+
+        sheet.createRow(5).createCell(0).setCellValue("Datos de la factura");
+        sheet.createRow(5).createCell(0).setCellValue("Folio: " + factura.getId());
+        sheet.createRow(6).createCell(0).setCellValue("Descripcion: " + factura.getDescripcion());
+        sheet.createRow(7).createCell(0).setCellValue("Fecha: " + factura.getCreateAt());
     }
 }
