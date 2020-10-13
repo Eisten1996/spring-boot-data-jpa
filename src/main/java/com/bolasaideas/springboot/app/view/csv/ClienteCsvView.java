@@ -17,7 +17,7 @@ import java.util.Map;
  * @project spring-boot-data-jpa
  * @created 12/10/2020 - 18:13
  */
-@Component("listar")
+@Component("listar.csv")
 public class ClienteCsvView extends AbstractView {
 
     public ClienteCsvView() {
