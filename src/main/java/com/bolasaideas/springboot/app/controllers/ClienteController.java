@@ -4,6 +4,7 @@ import com.bolasaideas.springboot.app.models.entities.Cliente;
 import com.bolasaideas.springboot.app.models.service.IClienteService;
 import com.bolasaideas.springboot.app.models.service.IUploadFileService;
 import com.bolasaideas.springboot.app.util.paginator.PageRender;
+import com.bolasaideas.springboot.app.view.xml.ClienteList;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -81,6 +83,12 @@ public class ClienteController {
         model.put("cliente", cliente);
         model.put("titulo", "Detalle cliente: " + cliente.getNombre());
         return "ver";
+    }
+
+    @GetMapping(value = "/listar-rest")
+    @ResponseBody
+    public ClienteList listarRest() {
+        return new ClienteList(clienteService.findAll());
     }
 
     @RequestMapping(value = {"/listar", "/"}, method = RequestMethod.GET)
