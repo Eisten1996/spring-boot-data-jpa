@@ -1,18 +1,17 @@
 package com.bolasaideas.springboot.app.models.entities;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-import org.springframework.format.annotation.DateTimeFormat;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "clientes")
@@ -44,7 +43,9 @@ public class Cliente implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createAt;
 
+    @SuppressWarnings("JpaAttributeTypeInspection")
     @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Factura> facturas;
 
     public Cliente() {
